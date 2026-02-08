@@ -6,6 +6,14 @@ import "core:sys/windows"
 old_mode: u32
 stdin := windows.GetStdHandle(windows.STD_INPUT_HANDLE)
 
+init_console :: proc() {
+    stdout := windows.GetStdHandle(windows.STD_OUTPUT_HANDLE)
+    mode: u32
+    windows.GetConsoleMode(stdout, &mode)
+    mode |= windows.ENABLE_VIRTUAL_TERMINAL_PROCESSING
+    windows.SetConsoleMode(stdout, mode)
+}
+
 enable_raw :: proc() {
     windows.GetConsoleMode(stdin, &old_mode)
 

@@ -17,6 +17,8 @@ common_words: []Word_With_Newline = #load("words/common-5-letter-words.txt")
 
 main :: proc() {
 
+    init_console()
+
     answer := random_common_word()
 
     for _ in 0..<WORD_LENGTH { fmt.print(".") }

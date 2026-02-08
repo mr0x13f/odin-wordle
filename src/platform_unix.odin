@@ -6,6 +6,10 @@ import "core:os/os2"
 
 old_term: posix.termios
 
+init_console :: proc() {
+    
+}
+
 enable_raw :: proc() {
     posix.tcgetattr(os.stdin, &old_term)
 
